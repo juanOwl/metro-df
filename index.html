@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html lang ="en" id="background"> 
+    <head>
+        <title>METRO PROJECT</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header
+            <nav>
+                <div>
+                    <a href mnav="index.html"><img id ="img1" src="images/metroLogo.png" width = 9%></a>
+                </div>
+                <ul>                
+                    <li>                    
+                        <a href mnav="index.html"><b>HOME</b></a>  
+                    </li>
+                    <li>
+                        <a href mnav="consulta.html"><b>CONSULTA</b></a>
+                    </li>
+                    <li>
+                        <a href mnav="mapa.html"><b>MAPA</b></a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section id="teste">            
+            <!-- <div class ="white-box">   -->
+        </section>
+
+        </div>
+     <script>
+        document.querySelectorAll('[mnav]').forEach(link => {
+            const conteudo = document.getElementById('teste')
+            
+            link.onclick = function(e) {
+                e.preventDefault()
+                fetch(link.getAttribute('mnav'))
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+            }
+        })
+     </script>   
+    </body>
+</html>

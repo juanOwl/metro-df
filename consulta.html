@@ -1,99 +1,75 @@
 <link rel = 'stylesheet' href="style.css">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/font-awesome.min.css">
+<link href="./fontAwesome/css/all.min.css" rel="stylesheet">
 <body>
-<div class ="white-box">
-    <h1 id="align">Simular horário de chegada</h1>
-     <form>
-        <h2><label>Horas</label>
-            <select name="horas" id="testea">
-                <option value="0">00</option>
-                <option value="1">01</option>
-                <option value="2">02</option>
-                <option value="3">03</option>
-                <option value="4">04</option>
-                <option value="5">05</option>
-                <option value="6">06</option>
-                <option value="7">07</option>
-                <option value="8">08</option>
-                <option value="9">09</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-            </select><br><br>
-        <label for="">Minutos</label>
-            <select id="testea" name="minutos">
-                <option value="0">00</option>
-                <option value="1">01</option>
-                <option value="2">02</option>
-                <option value="3">03</option>
-                <option value="4">04</option>
-                <option value="5">05</option>
-                <option value="6">06</option>
-                <option value="7">07</option>
-                <option value="8">08</option>
-                <option value="9">09</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-                <option value="28">28</option>
-                <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-                <option value="32">32</option>
-                <option value="33">33</option>
-                <option value="34">34</option>
-                <option value="35">35</option>
-                <option value="36">36</option>
-                <option value="37">37</option>
-                <option value="38">38</option>
-                <option value="39">39</option>
-                <option value="40">40</option>
-                <option value="41">41</option>
-                <option value="42">42</option>
-                <option value="43">43</option>
-                <option value="44">44</option>
-                <option value="45">45</option>
-                <option value="46">46</option>
-                <option value="47">47</option>
-                <option value="48">48</option>
-                <option value="49">49</option>
-                <option value="50">50</option>
-                <option value="51">51</option>
-                <option value="52">52</option>
-                <option value="53">53</option>
-                <option value="54">54</option>
-                <option value="55">55</option>
-                <option value="56">56</option>
-                <option value="57">57</option>
-                <option value="58">58</option>
-                <option value="59">59</option>
+    <div>
+        <p>- Insira a estação de embarque<br>- Insira a estação de destino<br>- Consulte no painel quanto tempo falta para o seu trem chegar!</p>
+    </div>
 
-            </select><br></h2>
-        <button id="botao" formaction="http://127.0.0.1:5502/metroProject/horas" formmethod="post">SIMULAR</button>
-    </form>     
+    <div class="situacao"> A circulação dos trens está <br> <h1>NORMAL</h1></div>
+    <i class="fa-solid fa-train-subway"></i>
+<div class="subway">
+     <form>
+                <h1>Consultar Tempo da Viagem<i class="fa-solid fa-clock"></i></h1>           
+            <label>Estação de Entrada</label>
+
+                <select class="formOptions" name="estacoesUm">
+                    <option value="-1" disabled selected hidden>Escolha Estação</option>
+                    <option value="0">Estação Central</option>
+                    <option value="1">Estação Galeria</option>
+                    <option value="2">Estação 102 Sul</option>
+                    <option value="3">Estação 108 Sul</option>
+                    <option value="4">Estação 112 Sul</option>
+                    <option value="5">Estação 114 Sul</option>
+                    <option value="6">Estação Asa Sul</option>
+                    <option value="7">Estação Shopping</option>
+                    <option value="8">Estação Feira</option>
+                    <option value="9">Estação Guará</option>
+                    <option value="10">Estação Arniqueiras</option>
+                    <option value="11">Estação Aguas Claras</option>
+                    <option value="12">Estação Consecionárias</option>
+                    <option value="13">Estação Praça do Relógio</option>
+                    <option value="14">Estação Centro Metropolitano</option>
+                    <option value="15">Estação Ceilandia Sul</option>
+                    <option value="16">Estação Guariroba</option>
+                    <option value="17">Estação Ceilândia Centro</option>
+                    <option value="18">Estação Ceilândia Norte</option>
+                    <option value="19">Estação Ceilândia</option>
+                    <option value="20">Estação Taguating</option>
+                    <option value="21">Estação Furnas</option>
+                    <option value="22">Estação Samambaia Sul</option>
+                    <option value="23">Estação Terminal Samambaia</option>
+                </select><br>
+
+                <label>Estação de Saída</label>
+                <select  class="formOptions" name="estacoesDois" >
+                    <option value="-1" disabled selected hidden>Escolha Estação</option>
+                    <option value="0">Estação Central</option>
+                    <option value="1">Estação Galeria</option>
+                    <option value="2">Estação 102 Sul</option>
+                    <option value="3">Estação 108 Sul</option>
+                    <option value="4">Estação 112 Sul</option>
+                    <option value="5">Estação 114 Sul</option>
+                    <option value="6">Estação Asa Sul</option>
+                    <option value="7">Estação Shopping</option>
+                    <option value="8">Estação Feira</option>
+                    <option value="9">Estação Guará</option>
+                    <option value="10">Estação Arniqueiras</option>
+                    <option value="11">Estação Aguas Claras</option>
+                    <option value="12">Estação Consecionárias</option>
+                    <option value="13">Estação Praça do Relógio</option>
+                    <option value="14">Estação Centro Metropolitano</option>
+                    <option value="15">Estação Ceilandia Sul</option>
+                    <option value="16">Estação Guariroba</option>
+                    <option value="17">Estação Ceilândia Centro</option>
+                    <option value="18">Estação Ceilândia Norte</option>
+                    <option value="19">Estação Ceilândia</option>
+                    <option value="20">Estação Taguating</option>
+                    <option value="21">Estação Furnas</option>
+                    <option value="22">Estação Samambaia Sul</option>
+                    <option value="23">Estação Terminal Samambaia</option>
+                </select><br>
+                <button class="submit" mSubmit formaction="http://127.0.0.1:5502/metroProject/horas" formmethod="post">SIMULAR</button> </div>
+    </form>    
+</div>
 </body>

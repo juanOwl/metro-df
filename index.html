@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Desafio Menu</title>
+    <title>METRO DF</title>
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="./fontAwesome/css/all.min.css" rel="stylesheet">
     <link href="style.css" rel='stylesheet'>
@@ -13,7 +13,7 @@
 <body>
     <header class="cabecalho">
         <div class="logo">
-            <a href="https://google.com.br"><img class=logo src="images/metroLogo.png"></a>
+            <a href="index.html"><img class=logo src="images/metroLogo.png"></a>
         </div>
         <nav class="menu">
             <ul>
@@ -24,14 +24,11 @@
                     <a href mnavConsulta="consulta.html">Simulador</a>
                 </li>
                 <li>
-                    <a href="#sobre">Estações</a>
-                </li>
-                <li>
                     <a href="mapa.html">Mapa</a>
                 </li>
             </ul>
         </nav>
-        <div class="autenticacao">
+        <div class="whatsapp">
             <a href="https://api.whatsapp.com/send?phone=5561995720279&text=Suporte%20Metro%20Bras%C3%ADlia"><i
                     class="fa-brands fa-whatsapp"></i></a>
         </div>
@@ -39,61 +36,76 @@
 
 
     <section id="teste">
-        <div class="container">
-            <div class="slider">
-                <div class="slider__slides">
-                    <div class="slider__slide active">
-                        <img
-                            src="https://metro.df.gov.br/wp-content/uploads/2022/08/Cartaz__Ouvidoria2022-scaled.jpg" />
+        <div class="gif">
+            <div class="container">
+                <div class="slider">
+                    <div class="slider__slides">
+                        <div class="slider__slide active">
+                            <img
+                                src="https://metro.df.gov.br/wp-content/uploads/2022/08/Cartaz__Ouvidoria2022-scaled.jpg" />
+                        </div>
+                        <div class="slider__slide">
+                            <img
+                                src="https://metro.df.gov.br/wp-content/uploads/2022/08/periodo-eleitoral-site-v2-01.png" />
+                        </div>
+                        <div class="slider__slide">
+                            <img src="./images/metro3.png" />
+                        </div>
                     </div>
-                    <div class="slider__slide">
-                        <img
-                            src="https://metro.df.gov.br/wp-content/uploads/2022/08/periodo-eleitoral-site-v2-01.png" />
-                    </div>
-                    <div class="slider__slide">
-                        <img src="./images/metro3.png" />
+                    <div id="nav-button--prev" class="slider__nav-button"></div>
+                    <div id="nav-button--next" class="slider__nav-button"></div>
+                    <div class="slider__nav">
+                        <div class="slider__navlink active"></div>
+                        <div class="slider__navlink"></div>
+                        <div class="slider__navlink"></div>
                     </div>
                 </div>
-                <div id="nav-button--prev" class="slider__nav-button"></div>
-                <div id="nav-button--next" class="slider__nav-button"></div>
-                <div class="slider__nav">
-                    <div class="slider__navlink active"></div>
-                    <div class="slider__navlink"></div>
-                    <div class="slider__navlink"></div>
-                </div>
+            </div>
+
+            <div class="noticias">
+                <label style="top:-35px; position:absolute;font-size:25px;color:orange">NOTÍCIAS</label>
+                <div><i class="fa-solid fa-newspaper"></i> Atenção: Horário Operacional de Domingo (31/07 e 07/08) será de 06h às 21h</div>
+                <div><i class="fa-solid fa-newspaper"></i> Manutenção Preventiva de Esmerilhamento neste Domingo (17/10/2021)</div>
+                <div><i class="fa-solid fa-newspaper"></i> Manutenção Preventiva de Esmerilhamento neste Domingo (10/10/2021)</div>
             </div>
         </div>
     </section>
 
     <script>
-        const resultado1 = document.createElement( 'div' )
-        resultado1.classList.add( 'painel' )
-        const resultado2 = document.createElement( 'div' )
-        resultado2.classList.add('consulta')
-        const section = document.querySelector( 'section' )
-        const body = document.querySelector('body')
-        document.querySelectorAll( '[mnavConsulta]' ).forEach( link => {
-            const conteudo = document.getElementById( 'teste' )
 
-            link.onclick = function ( e ) {
+        // DECLARAÇÕES UTEIS
+        const resultado1 = document.createElement('div')
+        resultado1.classList.add('painel')
+        const resultado2 = document.createElement('div')
+        resultado2.classList.add('consulta')
+        const section = document.querySelector('section')
+        const body = document.querySelector('body')
+
+
+        // FETCH PARA QUE A PAGINA NÃO REDIRECIONE
+        document.querySelectorAll('[mnavConsulta]').forEach(link => {
+            const conteudo = document.getElementById('teste')
+
+            link.onclick = function (e) {
                 e.preventDefault()
-                fetch( link.getAttribute( 'mnavConsulta' ) )
-                    .then( resp => resp.text() )
-                    .then( html => conteudo.innerHTML = html )
-                    .then( () => {
-                        const submit = document.querySelector( '[mSubmit]' )
-                        submit.onclick = function ( e ) {
+                fetch(link.getAttribute('mnavConsulta'))
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+                    .then(() => {
+                        // SOLICITANDO DADOS DO FORMULÁRIO DA PAGINA CONSULTA.HTML E FAZENDO ALGUMAS DECLARAÇÕES PRA DEPOIS
+                        const submit = document.querySelector('[mSubmit]')
+                        submit.onclick = function (e) {
                             e.preventDefault()
                             const form = e.target.parentNode
-                            const formData = new FormData( form )
-                            const estacaoUmFromForm = formData.get( 'estacoesUm' )
-                            const estacaoDoisFromForm = formData.get( 'estacoesDois' )
-                            console.log( estacaoUmFromForm )
-                            console.log( estacaoDoisFromForm )
+                            const formData = new FormData(form)
+                            const estacaoUmFromForm = formData.get('estacoesUm')
+                            const estacaoDoisFromForm = formData.get('estacoesDois')
+                            const subway = document.getElementById('subway')
 
 
 
-                            function simulador( estacao1, estacao2 ) {
+
+                            function simulador(estacao1, estacao2) {
 
                                 // Array com as estações do METRO DF e respectivos tempos de chegada em segundos (tempo real médio) a partir da estação central
                                 // Exemplo: na estação 'sul102' temos o número 210 que significa quantos segundos em média ela está distante da estação central
@@ -130,17 +142,17 @@
 
 
 
-                                if ( ( Object.values( estacoes )[estacao1] ) && Object.values( estacoes )[estacao2] ) {
-                                    const primeiraEstacao = Object.values( estacoes )[estacao1]
-                                    const segundaEstacao = Object.values( estacoes )[estacao2]
+                                if ((Object.values(estacoes)[estacao1]) && Object.values(estacoes)[estacao2]) {
+                                    const primeiraEstacao = Object.values(estacoes)[estacao1]
+                                    const segundaEstacao = Object.values(estacoes)[estacao2]
 
                                     const horasPrimeira = primeiraEstacao[1]
                                     const horasSegunda = segundaEstacao[1]
 
-                                    if ( horasPrimeira > horasSegunda ) {
-                                        return ( horasPrimeira - horasSegunda )
+                                    if (horasPrimeira > horasSegunda) {
+                                        return (horasPrimeira - horasSegunda)
                                     }
-                                    else if ( horasSegunda - horasPrimeira ) {
+                                    else if (horasSegunda - horasPrimeira) {
                                         return horasSegunda - horasPrimeira
                                     }
                                     else { return '0' }
@@ -148,34 +160,36 @@
                                 }
 
                             }
-                            function toHoursAndMinutes( totalMinutes ) {
+                            function toHoursAndMinutes(totalMinutes) {
                                 const minutes = totalMinutes % 60;
-                                const hours = Math.floor( totalMinutes / 60 );
-                                       
-                                
-                                       if (((estacaoDoisFromForm) != null) && ((estacaoUmFromForm) != null)) {
-                                return `Duração de aproximadamente ${padTo2Digits( hours )} minutos e ${padTo2Digits( minutes )} segundos`;}
-                                        else return "Insira sua estação de entrada e sua estação de saída!"
+                                const hours = Math.floor(totalMinutes / 60);
+
+
+                                if (((estacaoDoisFromForm) != null) && ((estacaoUmFromForm) != null)) {
+                                    return `Duração de aproximadamente ${padTo2Digits(hours)} minutos e ${padTo2Digits(minutes)} segundos`;
+                                }
+                                else return "Insira sua estação de entrada e sua estação de saída!"
                             }
 
-                            function padTo2Digits( num ) {
-                                return num.toString().padStart( 2, '0' );
+                            function padTo2Digits(num) {
+                                return num.toString().padStart(2, '0');
                             }
 
-                            console.log( toHoursAndMinutes( simulador( estacaoUmFromForm, estacaoDoisFromForm ) ) )
-                            resultado2.innerHTML = toHoursAndMinutes( simulador( estacaoUmFromForm, estacaoDoisFromForm ) )
+                            // INSIRO O RESULTADO NA DIV "RESULTADO2"
+                            resultado2.innerHTML = toHoursAndMinutes(simulador(estacaoUmFromForm, estacaoDoisFromForm))
 
-                            if (document.querySelector('resultado2')){
-                            body.removeChild(resultado2)
-                            body.appendChild( resultado2 )
+                            if (document.querySelector('resultado2')) {
+                                subway.removeChild(resultado2)
+                                subway.appendChild(resultado2)
+                            }
+                            else subway.appendChild(resultado2)
                         }
-                            else body.appendChild( resultado2 )
-                            // console.log(Object.values(estacoes))
-                        }
-                    } )
-                    .then( () => {
-                        const metro = ( hora, minutos ) => {
-                            if ( ( hora > 24 || hora < 0 || minutos < 0 || minutos > 59 ) )
+                    })
+                    .then(() => {
+                        // FUNÇÃO PARA EXIBIR O PAINEL (QUASE IDENTICO AO REAL (VER EM https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.aovivodebrasilia.com.br%2Fwp-content%2Fuploads%2F2017%2F02%2Fpainel-tempo-metro-DF.jpg&f=1&nofb=1))
+                        const subway = document.getElementById('subway')
+                        const metro = (hora, minutos) => {
+                            if ((hora > 24 || hora < 0 || minutos < 0 || minutos > 59))
                                 return ['Hora inválida']
 
                             // Variaveis e constantes
@@ -184,6 +198,15 @@
                             const endHours = 23
                             const resultado = []
                             const final = []
+
+                            // PEGANDO HORA ATUAL
+                            const nowFunction = new Date()
+                            const nowHours = nowFunction.getHours()
+                            const nowMinutes = nowFunction.getMinutes()
+
+                            if (hora > endHours) {
+                                return "METRO FECHADO"
+                            }
 
                             //Objeto principal
                             const info = {
@@ -200,65 +223,65 @@
                             // Definindo horarios de funcionamento (06AM - 20h)
                             {
                                 //HORA de funcionamento
-                                const metroHoras = ( min, max, step ) => {
-                                    for ( let i = min; i <= max; i += step ) {
-                                        info.ceilandia.horas.push( i )
-                                        info.samambaia.horas.push( i )
+                                const metroHoras = (min, max, step) => {
+                                    for (let i = min; i <= max; i += step) {
+                                        info.ceilandia.horas.push(i)
+                                        info.samambaia.horas.push(i)
                                     }
                                     // info.ceilandia.horas.push(info.ceilandia.horas.length+2)
                                 }
-                                metroHoras( startHours, endHours, stepHours )
+                                metroHoras(startHours, endHours, stepHours)
 
                                 //MINUTOS que o metro de CEILANDIA passa
-                                const CEIminutos = ( min, max, step ) => {
-                                    for ( i = min; i <= max; i += step ) { info.ceilandia.minutos.push( i ) }
+                                const CEIminutos = (min, max, step) => {
+                                    for (i = min; i <= max; i += step) { info.ceilandia.minutos.push(i) }
                                 }
-                                CEIminutos( 20, 60, 20 )
+                                CEIminutos(20, 60, 20)
 
                                 //MINUTOS que o metro de SAMAMBAIA passa
-                                const SAMminutos = ( min, max, step ) => {
-                                    for ( i = min; i <= max; i += step ) { info.samambaia.minutos.push( i ) }
+                                const SAMminutos = (min, max, step) => {
+                                    for (i = min; i <= max; i += step) { info.samambaia.minutos.push(i) }
                                 }
-                                SAMminutos( 10, 70, 20 )
+                                SAMminutos(10, 70, 20)
                             }
 
 
                             // Checando que horas você chegou e que horas o metrô passa
-                            if ( ( info.ceilandia.horas.includes( hora ) ) || info.samambaia.horas.includes( hora ) ) {
-                                for ( i = 0; i <= info.ceilandia.minutos.length; i++ ) {
-                                    if ( ( minutos <= info.ceilandia.minutos[i] ) && ( minutos > info.ceilandia.minutos[i - 1] ) )
-                                        resultado.push( info.ceilandia.minutos[i] )
+                            if ((info.ceilandia.horas.includes(hora)) || info.samambaia.horas.includes(hora)) {
+                                for (i = 0; i <= info.ceilandia.minutos.length; i++) {
+                                    if ((minutos <= info.ceilandia.minutos[i]) && (minutos > info.ceilandia.minutos[i - 1]))
+                                        resultado.push(info.ceilandia.minutos[i])
                                 }
-                                for ( i = 0; i <= info.samambaia.minutos.length; i++ ) {
-                                    if ( ( minutos >= 10 && ( minutos <= info.samambaia.minutos[i] ) && ( minutos > info.samambaia.minutos[i - 1] ) ) )
-                                        resultado.push( info.samambaia.minutos[i] )
+                                for (i = 0; i <= info.samambaia.minutos.length; i++) {
+                                    if ((minutos >= 10 && (minutos <= info.samambaia.minutos[i]) && (minutos > info.samambaia.minutos[i - 1])))
+                                        resultado.push(info.samambaia.minutos[i])
                                 }
-                                if ( ( minutos < 10 ) && ( minutos > 0 ) ) { resultado.push( info.samambaia.minutos[1] ) }
+                                if ((minutos < 10) && (minutos > 0)) { resultado.push(info.samambaia.minutos[1]) }
 
                             }
-                            let proximoTrem = info.samambaia.minutos.includes( resultado[0] ) ? "Samambaia" : "Ceilandia"
+                            let proximoTrem = info.samambaia.minutos.includes(resultado[0]) ? "Samambaia" : "Ceilandia"
 
 
-                            if ( ( info.samambaia.horas.includes( hora ) ) && ( info.samambaia.minutos.includes( resultado[1] ) ) && ( ( resultado[1] - minutos ) != 0 ) ) {
-                                final.push( `<i class="fa-solid fa-angles-right samambaia"></i>\u00A0SAMAMBAIA  \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 ${resultado[1] - minutos}MIN <br>` )                                
+                            if ((info.samambaia.horas.includes(hora)) && (info.samambaia.minutos.includes(resultado[1])) && ((resultado[1] - minutos) != 0)) {
+                                final.push(`<i class="fa-solid fa-angles-right samambaia"></i>\u00A0SAMAMBAIA  \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 ${resultado[1] - minutos}MIN <br>`)
                             }
-                            else if ( ( resultado[1] - minutos ) == 0 ) {
-                                final.push( '<i class="fa-solid fa-angles-right samambaia"></i>\u00A0SAMAMBAIA  \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 PLATAFORMA <br>' )
-                            }
-
-
-                            if ( ( info.ceilandia.horas.includes( hora ) ) && ( info.ceilandia.minutos.includes( resultado[0] ) ) && ( ( resultado[0] - minutos ) != 0 ) ) {
-                                final.push( `<i class="fa-solid fa-angles-right ceilandia"></i>\u00A0CEILÂNDIA   \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0  ${resultado[0] - minutos}MIN <br>` )
-                            }
-                            else if ( ( ( resultado[0] - minutos ) == 0 ) || ( ( info.ceilandia.horas.includes( hora ) ) && ( minutos == 00 ) ) ) {
-                                final.push( '<i class="fa-solid fa-angles-right ceilandia"></i> \u00A0CEILÂNDIA \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0PLATAFORMA <br>' )
+                            else if ((resultado[1] - minutos) == 0) {
+                                final.push('<i class="fa-solid fa-angles-right samambaia"></i>\u00A0SAMAMBAIA  \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 PLATAFORMA <br>')
                             }
 
 
+                            if ((info.ceilandia.horas.includes(hora)) && (info.ceilandia.minutos.includes(resultado[0])) && ((resultado[0] - minutos) != 0)) {
+                                final.push(`<i class="fa-solid fa-angles-right ceilandia"></i>\u00A0CEILÂNDIA   \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0  ${resultado[0] - minutos}MIN <br>`)
+                            }
+                            else if (((resultado[0] - minutos) == 0) || ((info.ceilandia.horas.includes(hora)) && (minutos == 00))) {
+                                final.push('<i class="fa-solid fa-angles-right ceilandia"></i> \u00A0CEILÂNDIA \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0PLATAFORMA <br>')
+                            }
 
-                            if ( ( resultado[0] - minutos ) < ( resultado[1] - minutos ) ) {
+
+
+                            if ((resultado[0] - minutos) < (resultado[1] - minutos)) {
                                 final.reverse()
-                            }
+                            }   
 
 
                             return `${final[0]}<br>${final[1]}`
@@ -268,88 +291,59 @@
 
 
 
-                        //INSIRA AQUI O HORÁRIO DE CHEGADA NA ESTAÇÃO NO FORMATO (HORA,MINUTO)
-                        const interval = setInterval( () => {
+
+
+                        // FUNÇÃO QUE CHECA O HORÁRIO ATUAL E CALCULA QUANTO TEMPO FALTA PARA O TREM CHEGAR, BASEADO NOS ARRAYS
+                        // QUE FOI CRIADO
+                        const interval = setInterval(() => {
                             let now = new Date()
                             let hourNow = now.getHours()
                             let minutesNow = now.getMinutes()
-                            resultado1.innerHTML = `PRÓXIMOS TRENS <br><br> ${metro( hourNow, minutesNow )}`;
-                            section.appendChild( resultado1 )
-                        }, 30 );
-                        console.log( resultado1 )
-                    } )
+                            resultado1.innerHTML = `PRÓXIMOS TRENS <br><br> ${metro(hourNow, minutesNow)}`;
+                            subway.appendChild(resultado1)
+                        }, 30);
+                    })
             }
-        } )
-        document.querySelectorAll( '[mnav]' ).forEach( link => {
-            const conteudo = document.getElementById( 'teste' )
-
-            link.onclick = function ( e ) {
-                e.preventDefault()
-
-                fetch( link.getAttribute( 'mnav', {
-                } ) )
-                    .then( resp => resp.text() )
-                    .then( html => conteudo.innerHTML = html )
-            }
-        } )
+        })
 
 
 
 
-        let slides = document.getElementsByClassName( "slider__slide" );
-        let navlinks = document.getElementsByClassName( "slider__navlink" );
+        // FUNÇÕES DO SLIDER DO INDEX.HTML (NÃO FOI CRIADO POR MIM, APENAS EDITEI ALGUMAS FUNCIONALIDADES PARA MELHOR ADEQUAÇÃO)
+        let slides = document.getElementsByClassName("slider__slide");
+        let navlinks = document.getElementsByClassName("slider__navlink");
         let currentSlide = 0;
 
-        document.getElementById( "nav-button--next" ).addEventListener( "click", () => {
-            changeSlide( currentSlide + 1 )
-        } );
-        document.getElementById( "nav-button--prev" ).addEventListener( "click", () => {
-            changeSlide( currentSlide - 1 )
-        } );
+        document.getElementById("nav-button--next").addEventListener("click", () => {
+            changeSlide(currentSlide + 1)
+        });
+        document.getElementById("nav-button--prev").addEventListener("click", () => {
+            changeSlide(currentSlide - 1)
+        });
 
-        function changeSlide( moveTo ) {
-            if ( moveTo >= slides.length ) { moveTo = 0; }
-            if ( moveTo < 0 ) { moveTo = slides.length - 1; }
+        function changeSlide(moveTo) {
+            if (moveTo >= slides.length) { moveTo = 0; }
+            if (moveTo < 0) { moveTo = slides.length - 1; }
 
-            slides[currentSlide].classList.toggle( "active" );
-            navlinks[currentSlide].classList.toggle( "active" );
-            slides[moveTo].classList.toggle( "active" );
-            navlinks[moveTo].classList.toggle( "active" );
+            slides[currentSlide].classList.toggle("active");
+            navlinks[currentSlide].classList.toggle("active");
+            slides[moveTo].classList.toggle("active");
+            navlinks[moveTo].classList.toggle("active");
 
             currentSlide = moveTo
         }
-        const interval = setInterval( () => {
-                        changeSlide(currentSlide+1)
-                        }, 3500 )
+        const interval = setInterval(() => {
+            changeSlide(currentSlide + 1)
+        }, 3000)
 
 
-        document.querySelectorAll( '.slider__navlink' ).forEach( ( bullet, bulletIndex ) => {
-            bullet.addEventListener( 'click', () => {
-                if ( currentSlide !== bulletIndex ) {
-                    changeSlide( bulletIndex );
+        document.querySelectorAll('.slider__navlink').forEach((bullet, bulletIndex) => {
+            bullet.addEventListener('click', () => {
+                if (currentSlide !== bulletIndex) {
+                    changeSlide(bulletIndex);
                 }
-            } )
-        } )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            })
+        })
 
     </script>
 </body>

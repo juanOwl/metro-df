@@ -1,14 +1,15 @@
 <link rel = 'stylesheet' href="style.css">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/font-awesome.min.css">
 <link href="./fontAwesome/css/all.min.css" rel="stylesheet">
-<body>
+<div>
     <div>
         <p>- Insira a estação de embarque<br>- Insira a estação de destino<br>- Consulte no painel quanto tempo falta para o seu trem chegar!</p>
     </div>
 
     <div class="situacao"> A circulação dos trens está <br> <h1>NORMAL</h1></div>
+
+<div  id="subway">
     <i class="fa-solid fa-train-subway"></i>
-<div class="subway">
      <form>
                 <h1>Consultar Tempo da Viagem<i class="fa-solid fa-clock"></i></h1>           
             <label>Estação de Entrada</label>
@@ -72,4 +73,4 @@
                 <button class="submit" mSubmit formaction="http://127.0.0.1:5502/metroProject/horas" formmethod="post">SIMULAR</button> </div>
     </form>    
 </div>
-</body>
+</div>
